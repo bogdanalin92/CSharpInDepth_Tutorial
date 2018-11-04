@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace CSharpInDepth
 {
-    class Program
+    class Program : QueryData
     {
         static void Main(string[] args)
         {
@@ -48,26 +48,10 @@ namespace CSharpInDepth
                 (word, matches) => word + ": " + string.Join(";", matches.ToArray())).ToList().ForEach(Console.WriteLine);
 
             //Procesare Complexa al unui fisier xml cu ajutorul LINQ to XML
-            try
-            {
-                XDocument xdoc = XDocument.Load("xmlDoc.xml");
-                if (xdoc != null)
-                {
-                    var filtered = from p in xdoc.Descendants("Product")
-                                   join s in xdoc.Descendants("Supplier")
-                                   on (int)p.Attribute("SupplierID") equals (int)s.Attribute("SupplierID")
-                                   where (decimal)p.Attribute("Price") > 10
-                                   orderby (string)s.Attribute("Name")
-                                   select new
-                                   {
-                                       SupplierName = (string)s.Attribute("Name"),
-                                       ProductName = (string)p.Attribute("Name")
-                                   };
-
-                }
-            }
-            catch (SystemException sept) { Console.WriteLine(sept.Message); }
+            QueryXML();
             Console.Read();
         }
+
+       
     }
 }
