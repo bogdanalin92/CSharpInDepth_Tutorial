@@ -49,6 +49,17 @@ namespace CSharpInDepth
 
             //Procesare Complexa al unui fisier xml cu ajutorul LINQ to XML
             QueryXML();
+
+            Person jon = new Person("Jon");
+            Person tom = new Person("Tom");
+            StringProcessor jonsvoice, tomsvoice, background;
+            jonsvoice = new StringProcessor(jon.Say);
+            tomsvoice = new StringProcessor(tom.Say);
+            background = new StringProcessor(Background.Note);
+            jonsvoice("Hello, son.");
+            tomsvoice.Invoke("Hallo,dat!");
+            background("An airplane flies past.");
+
             Console.Read();
         }
 
