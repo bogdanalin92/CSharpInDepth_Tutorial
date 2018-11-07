@@ -20,18 +20,18 @@ namespace CSharpInDepth
             {
                 productCheckButton.Enabled = false;
                 string id = idInput.Text;
-                Task<Product> productLookup = directory.LookupAsync(id);
-                Task<int> stockLookup = warehouse.LookupStockLevelAsync(id);
-                Product product = await productLookup;
-                if(product == null)
+                //Task<Product> productLookup = directory.LookupAsync(id);
+                //Task<int> stockLookup = warehouse.LookupStockLevelAsync(id);
+                //Product product = await productLookup;
+                //if(product == null)
                 {
                     return;
                 }
-                nameValue.Text = product.Name;
-                priceValue.Text = product.Price.ToString("c");
+                //nameValue.Text = product.Name;
+                //priceValue.Text = product.Price.ToString("c");
 
-                int stock = await stockLookup;
-                stockValue.Text = stock.ToString();
+                //int stock = await stockLookup;
+                //stockValue.Text = stock.ToString();
             }
             finally
             {
